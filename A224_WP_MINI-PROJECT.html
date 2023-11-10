@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>water calculator</title>
+    <link rel="stylesheet" href="styling.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.16/angular.min.js"></script>
+    <script type="text/javascript">
+      function add()
+      {
+        const divi = document.createElement("div");
+        divi.setAttribute("class","middlebox")
+        const btn = document.createElement("button");
+        btn.setAttribute("id","btn");
+        btn.innerHTML = "<p>250ML<p>"
+        document.body.appendChild(btn);
+
+      }
+    </script>
+  </head>
+  <body ng-app="calculator">
+
+    <h1><center> Water Intake Calculator</center></h1>
+
+    <div ng-controller="maincontroller" >
+      <div class="leftbox"><div  id="bigcup" >
+        <center>
+          <p>Enter goal in litres:</p>
+          <input type=number ng-model="goal">
+          <br><br>
+          <button type="button" name="button" ng-click="in_ml(goal)">
+            <h2>SET GOAL</h2>
+          </button>
+        </center>
+      </div></div>
+
+    <div  class="middlebox">
+      <center>
+        <br><br>
+        <button type="button" name="button" onclick="add()" ng-click="drank()">
+          <h2>CLICK TO ADD GLASSES DRUNK</h2>
+        </button>
+        <br><p>You drank {{amt}}ml of water.</p>
+      </center>
+    </div>
+
+
+    <div class="rightbox"><center><br><br>
+      <button type="button" name="button" ng-click="remain(ml,amt,goal)">
+        <h2>CALCULATE</h2>
+      </button>
+      <br>
+      <p>{{re}}l remaining to reach your goal.</p>
+      <p>You achieved {{per}}% of your goal.</center>
+    </div>
+  </div>
+
+    <script>
+    var ngApp = angular.module('calculator',[]);
+    ngApp.controller('maincontroller',function($scope){
+    $scope.amt=0;
+    $scope.ml=0;
+
+
+    $scope.in_ml=function(goal){
+      $scope.ml=goal*1000;
+    };
+
+    $scope.drank=function(){
+      $scope.amt+=250;
+    };
+
+    $scope.remain=function(ml,amt,goal){
+      $scope.re=(ml-amt)/1000;
+      $scope.per=((goal-((ml-amt)/1000))*100)/goal;
+    };
+    })
+    </script>
+  </body>
+</html>
