@@ -10,3 +10,6 @@ Open the index.html file in your web browser.
 -Monitor your progress with real-time updates.
 -Calculate the percentage of your goal achieved.
 -Display the remaining liters of water needed to reach your target.
+
+# Visuals
+![image](https://github.com/pshraddha128/Water-Intake-Calculator/assets/143784340/ec05f017-ad03-4eba-9428-34187174c3d6)
